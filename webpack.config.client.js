@@ -7,7 +7,7 @@ const rupture = require('rupture');
 module.exports = {
     entry: [
         'react-hot-loader/patch',
-        'webpack-hot-middleware/client?http://0.0.0.0:3000/',
+        'webpack-hot-middleware/client?http://0.0.0.0:3001/',
         'webpack/hot/only-dev-server',
         './client/index.js',
     ],
@@ -28,6 +28,10 @@ module.exports = {
                     'babel-loader',
                 ],
                 exclude: /node_modules/,
+            },
+            {
+                test: /\.(png|eot|svg|ttf|woff|woff2)$/,
+                loader: 'file-loader?name=[name].[ext]'
             },
             {
                 test: /\.styl$/,
@@ -58,7 +62,7 @@ module.exports = {
 
     devServer: {
         host: 'localhost',
-        port: 3000,
+        port: 3001,
         historyApiFallback: true,
         hot: true,
     },

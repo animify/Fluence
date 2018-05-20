@@ -2,7 +2,6 @@ import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './stylesheets/styl/blossom.styl';
 
 const appRoot = document.getElementById('app');
 const render = Component =>

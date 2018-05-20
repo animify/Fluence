@@ -1,8 +1,9 @@
 import shortid from 'shortid';
 
-export const addFeedback = text => ({
+export const addFeedback = (title, text) => ({
     type: 'ADD_FEEDBACK',
     id: shortid.generate(),
+    title,
     text
 });
 

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { addFeedback } from '../store/actions';
 
 const AddFeedback = ({ dispatch }) => {
-    let input;
+    let summaryInput;
+    let descriptionInput;
 
     return (
         <div>
@@ -11,17 +12,23 @@ const AddFeedback = ({ dispatch }) => {
                 onSubmit={(e) => {
                     e.preventDefault();
 
-                    if (!input.value.trim()) {
+                    if (!summaryInput.value.trim() || !descriptionInput.value.trim()) {
                         return;
                     }
 
-                    dispatch(addFeedback(input.value));
+                    dispatch(addFeedback(summaryInput.value, descriptionInput.value));
 
-                    input.value = '';
+                    summaryInput.value = '';
+                    descriptionInput.value = '';
                 }}
             >
                 <div className="input">
-                    <input type="text" ref={node => (input = node)} />
+                    <input name="feedback-summary" type="text" ref={node => (summaryInput = node)} />
+                    <label htmlFor="feedback-summary">Summary</label>
+                </div>
+                <div className="input">
+                    <input name="feedback-description" type="text" ref={node => (descriptionInput = node)} />
+                    <label htmlFor="feedback-description">Description</label>
                 </div>
                 <div className="input">
                     <button className="button base" type="submit">Add Feedback</button>

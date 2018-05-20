@@ -5,6 +5,7 @@ const feedbackList = (state = [], action) => {
                 ...state,
                 {
                     id: action.id,
+                    title: action.title,
                     text: action.text,
                     completed: false
                 }

@@ -3,7 +3,7 @@ import FilterLink from '../containers/FilterLink';
 import { VisibilityFilters } from '../store/actions';
 
 const Filters = () => (
-    <div className="group">
+    <div className="group vertical">
         <FilterLink filter={VisibilityFilters.SHOW_ALL}>
             All
         </FilterLink>

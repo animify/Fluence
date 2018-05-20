@@ -37,7 +37,7 @@ const NewIdea = ({ dispatch }) => {
                     <label htmlFor="idea-category">Category</label>
                 </div>
                 <div className="input">
-                    <input name="idea-description" type="text" ref={node => (descriptionInput = node)} />
+                    <textarea name="idea-description" ref={node => (descriptionInput = node)} />
                     <label htmlFor="idea-description">Describe Your Idea</label>
                 </div>
                 <div className="input">

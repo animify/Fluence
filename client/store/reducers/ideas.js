@@ -1,26 +1,27 @@
-const feedbackList = (state = [], action) => {
+const ideas = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_FEEDBACK':
+        case 'NEW_IDEA':
             return [
                 ...state,
                 {
                     id: action.id,
                     title: action.title,
                     text: action.text,
+                    category: action.category,
                     completed: false
                 }
             ];
-        case 'TOGGLE_FEEDBACK':
-            return state.map((feedback) => {
-                if (feedback.id === action.id) {
-                    return { ...feedback, completed: !feedback.completed };
+        case 'TOGGLE_IDEA':
+            return state.map((idea) => {
+                if (idea.id === action.id) {
+                    return { ...idea, completed: !idea.completed };
                 }
 
-                return feedback;
+                return idea;
             });
         default:
             return state;
     }
 };
 
-export default feedbackList;
+export default ideas;

@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Feedback from './Feedback';
+import Idea from './Idea';
 
-const FeedbackList = ({ feedbackList, toggleFeedback }) => (
+const Ideas = ({ ideas, toggleIdea }) => (
     <ul className="list styled">
-        {feedbackList.map(feedback =>
-            <Feedback key={feedback.id} {...feedback} onClick={() => toggleFeedback(feedback.id)} />
+        {ideas.map(idea =>
+            <Idea key={idea.id} {...idea} onClick={() => toggleIdea(idea.id)} />
         )}
     </ul>
 );
 
-FeedbackList.propTypes = {
-    feedbackList: PropTypes.arrayOf(
+Ideas.propTypes = {
+    ideas: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.string.isRequired,
             completed: PropTypes.bool.isRequired,
@@ -19,7 +19,7 @@ FeedbackList.propTypes = {
             text: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
-    toggleFeedback: PropTypes.func.isRequired
+    toggleIdea: PropTypes.func.isRequired
 };
 
-export default FeedbackList;
+export default Ideas;

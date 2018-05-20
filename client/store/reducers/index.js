@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import feedbackList from './feedbackList';
+import ideas from './ideas';
 import visibilityFilter from './visibilityFilter';
 
 export default combineReducers({
-    feedbackList,
+    ideas,
     visibilityFilter
 });

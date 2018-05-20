@@ -1,9 +1,10 @@
 import shortid from 'shortid';
 
-export const addFeedback = (title, text) => ({
-    type: 'ADD_FEEDBACK',
+export const newIdea = (title, text, category) => ({
+    type: 'NEW_IDEA',
     id: shortid.generate(),
     title,
+    category,
     text
 });
 
@@ -12,8 +13,8 @@ export const setVisibilityFilter = filter => ({
     filter
 });
 
-export const toggleFeedback = id => ({
-    type: 'TOGGLE_FEEDBACK',
+export const toggleIdea = id => ({
+    type: 'TOGGLE_IDEA',
     id
 });
 

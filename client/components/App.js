@@ -1,13 +1,13 @@
 import React from 'react';
 import Filters from './Filters';
-import AddFeedback from '../containers/AddFeedback';
-import VisibleFeedback from '../containers/VisibleFeedback';
+import NewIdea from '../containers/NewIdea';
+import VisibleIdeas from '../containers/VisibleIdeas';
 
 const App = () => (
     <div className="container">
         <Filters />
-        <AddFeedback />
-        <VisibleFeedback />
+        <NewIdea />
+        <VisibleIdeas />
     </div>
 );
 

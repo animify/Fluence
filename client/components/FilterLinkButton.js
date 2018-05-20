@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 
 const FilterLinkButton = ({ active, children, onClick }) => (
     <button
-        className="button"
+        className={active ? 'button selected' : 'button'}
         onClick={onClick}
-        disabled={active}
     >
         {children}
     </button>

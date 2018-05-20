@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { newIdea } from '../store/actions';
 
@@ -8,7 +8,7 @@ const NewIdea = ({ dispatch }) => {
     let categoryInput;
 
     return (
-        <div>
+        <Fragment>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -16,6 +16,8 @@ const NewIdea = ({ dispatch }) => {
                     if (!summaryInput.value.trim() || !descriptionInput.value.trim()) {
                         return;
                     }
+
+                    window.stylekit.components.modal.close('post-idea');
 
                     dispatch(newIdea(summaryInput.value, descriptionInput.value, categoryInput.value));
 
@@ -44,8 +46,8 @@ const NewIdea = ({ dispatch }) => {
                     <button className="button base" type="submit">Post Idea</button>
                 </div>
             </form>
-        </div>
-    )
-}
+        </Fragment>
+    );
+};
 
 export default connect()(NewIdea);

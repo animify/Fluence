@@ -31,5 +31,7 @@ export const VisibilityFilters = {
 
 export const Pages = {
     IDEAS: 'IDEAS',
-    POST_NEW_IDEA: 'POST_NEW_IDEA'
+    POST_NEW_IDEA: 'POST_NEW_IDEA',
+    SIGN_IN: 'SIGN_IN',
+    CREATE_ACCOUNT: 'CREATE_ACCOUNT'
 };

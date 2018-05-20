@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Idea from './Idea';
 
 const Ideas = ({ ideas, toggleIdea }) => (
-    <ul className="list styled">
-        {ideas.map(idea =>
-            <Idea key={idea.id} {...idea} onClick={() => toggleIdea(idea.id)} />
-        )}
-    </ul>
+    <Fragment>
+        <h2>All Ideas</h2>
+        <ul className="list styled">
+            {ideas.map(idea =>
+                <Idea key={idea.id} {...idea} onClick={() => toggleIdea(idea.id)} />
+            )}
+        </ul>
+    </Fragment>
 );
 
 Ideas.propTypes = {

@@ -1,8 +1,8 @@
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '@fluence-stylekit/kit';
 import App from './App';
-import '../node_modules/@fluence-stylekit/kit/stylekit.styl';
 
 const appRoot = document.getElementById('app');
 const render = Component =>

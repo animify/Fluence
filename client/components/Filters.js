@@ -1,24 +1,28 @@
 import React from 'react';
+import FilterToggle from '../containers/FilterToggle';
 import FilterLink from '../containers/FilterLink';
-import { VisibilityFilters, IdeaStatus } from '../store/actions';
+import { StatusFilters, FilterNames } from '../store/actions';
 
 const Filters = () => (
-    <div className="group vertical">
-        <FilterLink filter={VisibilityFilters.SHOW_ALL}>
-            All
-        </FilterLink>
-        <FilterLink filter={VisibilityFilters.SHOW_PENDING_REVIEW}>
-            {IdeaStatus.PENDING_REVIEW}
-        </FilterLink>
-        <FilterLink filter={VisibilityFilters.SHOW_PLANNED}>
-            {IdeaStatus.PLANNED}
-        </FilterLink>
-        <FilterLink filter={VisibilityFilters.SHOW_IN_PROGRESS}>
-            {IdeaStatus.IN_PROGRESS}
-        </FilterLink>
-        <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>
-            {IdeaStatus.COMPLETED}
-        </FilterLink>
+    <div className="filters"> Show me <div className="dropdown">
+        <FilterToggle />
+        <ul className="menu">
+            {Object.entries(StatusFilters).map(([type, name]) => (
+                <FilterLink key={name} filter={name}>
+                    {FilterNames[type]}
+                </FilterLink>)
+            )}
+        </ul>
+    </div> ideas, sorted by <div className="dropdown">
+            <FilterToggle />
+            <ul className="menu">
+                {Object.entries(StatusFilters).map(([type, name]) => (
+                    <FilterLink key={name} filter={name}>
+                        {FilterNames[type]}
+                    </FilterLink>)
+                )}
+            </ul>
+        </div>.
     </div>
 );
 

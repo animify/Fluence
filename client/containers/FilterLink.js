@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import { setVisibilityFilter } from '../store/actions';
+import { setStatusFilter } from '../store/actions';
 import FilterLinkButton from '../components/FilterLinkButton';
 
 const mapStateToProps = (state, ownProps) => ({
-    active: ownProps.filter === state.visibilityFilter
+    active: ownProps.filter === state.statusFilter
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onClick: () => dispatch(setVisibilityFilter(ownProps.filter))
+    onClick: () => dispatch(setStatusFilter(ownProps.filter))
 });
 
 export default connect(

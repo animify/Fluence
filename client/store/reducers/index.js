@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import ideas from './ideas';
-import visibilityFilter from './visibilityFilter';
+import statusFilter from './statusFilter';
 import visiblePage from './visiblePage';
 
 export default combineReducers({
     ideas,
-    visibilityFilter,
+    statusFilter,
     visiblePage
 });

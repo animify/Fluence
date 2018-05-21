@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import Filters from './Filters';
 import PostIdeaButton from './PostIdeaButton';
 import Nav from '../containers/Nav';
-import NewIdea from '../containers/NewIdea';
 import VisibleIdeas from '../containers/VisibleIdeas';
 import PostIdeaModal from './PostIdeaModal';
 
@@ -11,15 +10,16 @@ const App = () => (
         <Nav />
         <div className="layout">
             <div className="container">
-                <div className="row">
-                    <aside className="col-12@t col-3@m">
+                <h2>Feature Requests</h2>
+                <Filters />
+                <main className="row flex">
+                    <aside className="col-4@l order-2 order-1@m">
                         <PostIdeaButton />
-                        <Filters />
                     </aside>
-                    <main className="col-12@t col-9@m">
+                    <section className="col-8@l order-1 order-2@m">
                         <VisibleIdeas />
-                    </main>
-                </div>
+                    </section>
+                </main>
             </div>
         </div>
         <div className="modals">

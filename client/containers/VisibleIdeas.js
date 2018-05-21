@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
-import { toggleIdea, VisibilityFilters, IdeaStatus } from '../store/actions';
+import { toggleIdea, StatusFilters, IdeaStatus } from '../store/actions';
 import Ideas from '../components/Ideas';
 
 const getVisibleIdeas = (ideas, filter) => {
     switch (filter) {
-        case VisibilityFilters.SHOW_ALL:
+        case StatusFilters.SHOW_ALL:
             return ideas;
-        case VisibilityFilters.SHOW_PENDING_REVIEW:
+        case StatusFilters.SHOW_PENDING_REVIEW:
             return ideas.filter(t => t.status === IdeaStatus.PENDING_REVIEW);
-        case VisibilityFilters.SHOW_PLANNED:
+        case StatusFilters.SHOW_PLANNED:
             return ideas.filter(t => t.status === IdeaStatus.PLANNED);
-        case VisibilityFilters.SHOW_IN_PROGRESS:
+        case StatusFilters.SHOW_IN_PROGRESS:
             return ideas.filter(t => t.status === IdeaStatus.IN_PROGRESS);
-        case VisibilityFilters.SHOW_COMPLETED:
+        case StatusFilters.SHOW_COMPLETED:
             return ideas.filter(t => t.status === IdeaStatus.COMPLETED);
-        case VisibilityFilters.SHOW_ACTIVE:
+        case StatusFilters.SHOW_ACTIVE:
             return ideas.filter(t => t.status !== IdeaStatus.COMPLETED);
         default:
             throw new Error(`Unknown filter: ${filter}`);
@@ -22,7 +22,7 @@ const getVisibleIdeas = (ideas, filter) => {
 };
 
 const mapStateToProps = state => ({
-    ideas: getVisibleIdeas(state.ideas, state.visibilityFilter)
+    ideas: getVisibleIdeas(state.ideas, state.statusFilter)
 });
 
 const mapDispatchToProps = dispatch => ({

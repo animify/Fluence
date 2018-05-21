@@ -7,13 +7,22 @@ export const IdeaStatus = {
     COMPLETED: 'Completed'
 };
 
-export const VisibilityFilters = {
+export const StatusFilters = {
     SHOW_ALL: 'SHOW_ALL',
     SHOW_PENDING_REVIEW: 'SHOW_PENDING_REVIEW',
     SHOW_PLANNED: 'SHOW_PLANNED',
     SHOW_IN_PROGRESS: 'SHOW_IN_PROGRESS',
     SHOW_COMPLETED: 'SHOW_COMPLETED',
     SHOW_ACTIVE: 'SHOW_ACTIVE'
+};
+
+export const FilterNames = {
+    [StatusFilters.SHOW_ALL]: 'All',
+    [StatusFilters.SHOW_PENDING_REVIEW]: IdeaStatus.PENDING_REVIEW,
+    [StatusFilters.SHOW_PLANNED]: IdeaStatus.PLANNED,
+    [StatusFilters.SHOW_IN_PROGRESS]: IdeaStatus.IN_PROGRESS,
+    [StatusFilters.SHOW_COMPLETED]: IdeaStatus.COMPLETED,
+    [StatusFilters.SHOW_ACTIVE]: 'Active',
 };
 
 export const Pages = {
@@ -33,8 +42,8 @@ export const newIdea = (title, text, category) => ({
     text
 });
 
-export const setVisibilityFilter = filter => ({
-    type: 'SET_VISIBILITY_FILTER',
+export const setStatusFilter = filter => ({
+    type: 'SET_STATUS_FILTER',
     filter
 });
 

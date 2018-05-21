@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ChevronUp } from 'react-feather';
 
 const Idea = ({ onClick, completed, title, text, category, status }) => (
     <li className="item">
         <div className="upvote">
+            <ChevronUp color="#0050ff" />
             <h4>0</h4>
-            <a>Upvotes</a>
         </div>
         <div className="details">
             <a className="link link-dark" role="presentation" onClick={onClick}><h5>{title}</h5></a>
             <p style={{ textDecoration: completed ? 'line-through' : 'none' }}>{text}</p>
-            <div className="meta">
+            {/* <div className="meta">
                 <ul className="list horizontal">
                     <li className="item">
                         <small><strong>11</strong> comments</small>
@@ -25,7 +26,7 @@ const Idea = ({ onClick, completed, title, text, category, status }) => (
                         <small><a>Flag as innappropriate</a></small>
                     </li>
                 </ul>
-            </div>
+            </div> */}
         </div>
     </li>
 );

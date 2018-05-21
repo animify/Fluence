@@ -8,6 +8,7 @@ const ideas = (state = [], action) => {
                     title: action.title,
                     text: action.text,
                     category: action.category,
+                    status: action.status,
                     completed: false
                 }
             ];

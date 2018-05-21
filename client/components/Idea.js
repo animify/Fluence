@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Idea = ({ onClick, completed, title, text, category }) => (
+const Idea = ({ onClick, completed, title, text, category, status }) => (
     <li className="item">
         <div className="upvote">
             <h4>342</h4>
@@ -14,6 +14,9 @@ const Idea = ({ onClick, completed, title, text, category }) => (
                 <ul className="list horizontal">
                     <li className="item">
                         <small><strong>11</strong> comments</small>
+                    </li>
+                    <li className="item">
+                        <small>{status}</small>
                     </li>
                     <li className="item">
                         <small>{category}</small>
@@ -32,6 +35,7 @@ Idea.propTypes = {
     completed: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired
 };
 

@@ -1,24 +1,21 @@
 import express from 'express';
 import Webpack from 'webpack';
-
-const config = require('../webpack.config.client');
-const path = require('path');
+import passport from 'passport';
+import Core from './Core';
+import path from 'path';
+import Strategies from './modules/auth/strategies';
 
 const app = express();
-const compiler = Webpack(config);
+const core = new Core();
+const strategies = new Strategies(core);
+
 app.use(express.static('static'));
 
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-}));
+passport.use('local-signup', strategies.local.signup);
+passport.use('local-login', strategies.local.login);
 
-app.use(require('webpack-hot-middleware')(compiler, {
-    log: console.log,
-    path: '/__webpack_hmr',
-    heartbeat: 10 * 1000
-}));
-
+const appInit = core.middleware.initialize(app);
+appInit.use('/api', (req, res, next) => core.middleware.authed(req, res, next));
 
 app.get('/api', (req, res) => {
     res.send({

@@ -1,14 +1,32 @@
-import http from 'http';
-import app from './server';
+import Middleware from './modules/middleware/Middleware';
+import Validate from './modules/tools/Validate';
 
-const server = http.createServer(app);
-let currentApp = app;
-server.listen(3002);
+export default class Core {
+    _initializeDatabase() {
+        this.db = null;
+    }
 
-if (module.hot) {
-    module.hot.accept('./server', () => {
-        server.removeListener('request', currentApp);
-        server.on('request', app);
-        currentApp = app;
-    });
+    _initializeMiddleware() {
+        this.middleware = new Middleware(this);
+    }
+
+    _initializeTools() {
+        this.tools.validate = new Validate();
+    }
+
+    init() {
+        this._initializeDatabase();
+        this._initializeMiddleware();
+        this._initializeTools();
+    }
+
+    constructor() {
+        this.db = null;
+        this.middleware = null;
+        this.tools = {
+            validate: null
+        };
+
+        this.init();
+    }
 }

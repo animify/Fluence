@@ -6,9 +6,10 @@ const Ideas = ({ ideas, toggleIdea }) => (
     <Fragment>
         <h2>Feature Requests</h2>
         <ul className="list styled">
-            {ideas.map(idea =>
+            {ideas.length > 0 ? ideas.map(idea =>
                 <Idea key={idea.id} {...idea} onClick={() => toggleIdea(idea.id)} />
-            )}
+            ) :
+                <p>No ideas in here yet.</p>}
         </ul>
     </Fragment>
 );

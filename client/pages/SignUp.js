@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Nav from '../containers/Nav';
 import SignUpForm from '../containers/SignUpForm';
-import showResults from '../modules/showResults';
+import { Auth } from '../Api';
 
 const SignUp = () => (
     <Fragment>
@@ -10,7 +10,7 @@ const SignUp = () => (
             <div className="container">
                 <h2>Create Account</h2>
                 <main>
-                    <SignUpForm onSubmit={showResults} />
+                    <SignUpForm onSubmit={Auth.signUp} />
                 </main>
             </div>
         </div>

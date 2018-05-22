@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
-import Auth from './Auth';
+import { Auth } from '../Api';
 import History from './History';
 
 const client = (token = null) => {

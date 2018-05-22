@@ -11,7 +11,7 @@ const Nav = () => (
                     <NavLink page={Pages.IDEAS}>Ideas</NavLink>
                     <NavLink page={Pages.POST_NEW_IDEA}>Post Idea</NavLink>
                     <NavLink page={Pages.SIGN_IN}>Sign In</NavLink>
-                    <NavLink page={Pages.CREATE_ACCOUNT}>Create Account</NavLink>
+                    <NavLink page={Pages.SIGN_UP}>Create Account</NavLink>
                 </div>
             </ul>
         </div>

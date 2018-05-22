@@ -6,6 +6,7 @@ const rupture = require('rupture');
 
 module.exports = {
     entry: [
+        'babel-polyfill',
         'react-hot-loader/patch',
         'webpack-hot-middleware/client?http://0.0.0.0:3001/',
         'webpack/hot/only-dev-server',

@@ -1,15 +1,24 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { routerMiddleware } from 'react-router-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import '@fluence-stylekit/kit';
+import History from './modules/History';
 import rootReducer from './store/reducers';
 import Root from './components/Root';
 
+const middleware = routerMiddleware(History);
+const enhancer = composeWithDevTools(
+    applyMiddleware(middleware)
+);
+
 const store = createStore(
     rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    enhancer
 );
+
 const initialRoot = <Root store={store} />;
 
 const r = Component =>

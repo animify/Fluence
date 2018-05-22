@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import Filters from './Filters';
-import PostIdeaButton from './PostIdeaButton';
+import Filters from '../Components/Filters';
+import PostIdeaButton from '../Components/PostIdeaButton';
 import Nav from '../containers/Nav';
 import VisibleIdeas from '../containers/VisibleIdeas';
-import PostIdeaModal from './PostIdeaModal';
+import PostIdeaModal from '../Components/PostIdeaModal';
 
 const App = () => (
     <Fragment>

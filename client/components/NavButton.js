@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const NavButton = ({ active, children, onClick }) => (
+const NavButton = ({ active, children, page }) => (
     <li className={active ? 'item active' : 'item'}>
-        <a role="presentation" onClick={onClick}>{children}</a>
+        <Link to={page} role="presentation">{children}</Link>
     </li>
 );
 
 NavButton.propTypes = {
     active: PropTypes.bool.isRequired,
+    page: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
-    onClick: PropTypes.func.isRequired
 };
 
 export default NavButton;

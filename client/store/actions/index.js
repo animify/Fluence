@@ -26,10 +26,10 @@ export const FilterNames = {
 };
 
 export const Pages = {
-    IDEAS: 'IDEAS',
-    POST_NEW_IDEA: 'POST_NEW_IDEA',
-    SIGN_IN: 'SIGN_IN',
-    CREATE_ACCOUNT: 'CREATE_ACCOUNT'
+    IDEAS: '/ideas',
+    POST_NEW_IDEA: '/newidea',
+    SIGN_IN: '/signin',
+    SIGN_UP: '/signup'
 };
 
 
@@ -55,4 +55,9 @@ export const setVisiblePage = page => ({
 export const toggleIdea = id => ({
     type: 'TOGGLE_IDEA',
     id
+});
+
+export const batchActions = (...actions) => ({
+    type: 'BATCH_ACTIONS',
+    actions
 });

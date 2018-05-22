@@ -3,7 +3,8 @@ import qs from 'qs';
 import { Auth } from '../Api';
 import History from './History';
 
-const client = (token = null) => {
+const client = () => {
+    const token = Auth.getToken();
     const defaults = {
         headers: {
             Authorization: token ? `bearer ${token}` : '',
@@ -12,6 +13,8 @@ const client = (token = null) => {
     };
 
     axios.interceptors.response.use(response => response, (error) => {
+        console.log('using response ----- ', error);
+
         if (error.response.status === 400) {
             console.log(error.response.data);
         }
@@ -31,6 +34,4 @@ const client = (token = null) => {
     };
 };
 
-const request = client(Auth.getToken());
-
-export default request;
+export default client;

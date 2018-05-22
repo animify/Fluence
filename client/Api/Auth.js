@@ -1,13 +1,16 @@
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+import request from '../modules/Request';
 
 export default class Auth {
     static async signIn(formValues) {
-        await sleep(500);
-        window.alert(`Signing in with values:\n\n${JSON.stringify(formValues, null, 2)}`);
+        request().post('/auth/signin', formValues).then((e) => {
+            console.log(e);
+        });
     }
     static async signUp(formValues) {
-        await sleep(500);
-        window.alert(`Signing up with values:\n\n${JSON.stringify(formValues, null, 2)}`);
+        request().post('/auth/signup', formValues).then((e) => {
+            console.log(e);
+        });
     }
 
     static authenticateUser(token) {

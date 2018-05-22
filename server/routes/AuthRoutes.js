@@ -5,19 +5,21 @@ export default class AuthRoutes {
     constructor(core) {
         this.core = core;
         this.router = new express.Router();
-        this._applyRoutes(core);
+        this._applyRoutes();
 
         return this.router;
     }
 
     _applyRoutes() {
         this._setSignupRoute();
-        this._setLoginRoute();
+        this._setSigninRoute();
     }
 
     _setSignupRoute() {
         this.router.post('/signup', (req, res, next) => {
-            const validationResult = this.core.tools.validator.signupValidated(req.body);
+            console.log(req.body);
+
+            const validationResult = this.core.tools.validate.validateSignUp(req.body);
             if (!validationResult.success) {
                 return res.status(400).json({
                     success: false,
@@ -52,9 +54,9 @@ export default class AuthRoutes {
         });
     }
 
-    _setLoginRoute() {
-        this.router.post('/login', (req, res, next) => {
-            const validationResult = this.core.tools.validator.loginValidated(req.body);
+    _setSigninRoute() {
+        this.router.post('/signin', (req, res, next) => {
+            const validationResult = this.core.tools.validate.validateSignIn(req.body);
             if (!validationResult.success) {
                 return res.status(400).json({
                     success: false,

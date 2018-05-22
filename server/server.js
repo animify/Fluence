@@ -16,6 +16,7 @@ passport.use('local-login', strategies.local.login);
 
 const appInit = core.middleware.initialize(app);
 appInit.use('/api', (req, res, next) => core.middleware.authed(req, res, next));
+appInit.use('/auth', core.routes.auth);
 
 app.get('/api', (req, res) => {
     res.send({

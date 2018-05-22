@@ -1,5 +1,4 @@
 import validator from 'validator';
-import url from 'url';
 
 export default class Validate {
     validateSignUp(payload) {

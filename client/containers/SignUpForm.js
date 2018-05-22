@@ -4,16 +4,15 @@ import { Field, reduxForm } from 'redux-form';
 const required = value => (value ? undefined : 'Required');
 const maxLength = max => value =>
     (value && value.length > max ? `Must be ${max} characters or less` : undefined);
-const maxLength15 = maxLength(15);
+const minLength = min => value =>
+    (value && value.length < min ? `Must be ${min} characters or more` : undefined);
+const minLength8 = minLength(8);
 const number = value => (value && isNaN(Number(value)) ? 'Must be a number' : undefined);
-const minValue = min => value =>
-    (value && value < min ? `Must be at least ${min}` : undefined);
-const minValue18 = minValue(18);
 const email = value =>
     (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ?
         'Invalid email address' : undefined);
-const tooOld = value =>
-    (value && value > 65 ? 'You might be too old for this' : undefined);
+const password = value =>
+    (value && value.length < 9 ? 'You need 8 password characters' : undefined);
 const aol = value =>
     (value && /.+@aol\.com/.test(value) ?
         'Really? You still use AOL for your email?' : undefined);
@@ -31,11 +30,11 @@ const FieldLevelValidationForm = (props) => {
     return (
         <form onSubmit={handleSubmit}>
             <Field
-                name="username"
+                name="name"
                 type="text"
                 component={renderField}
-                label="Username"
-                validate={[required, maxLength15]}
+                label="Name"
+                validate={[required]}
             />
             <Field
                 name="email"
@@ -46,12 +45,12 @@ const FieldLevelValidationForm = (props) => {
                 warn={aol}
             />
             <Field
-                name="age"
-                type="number"
+                name="password"
+                type="password"
                 component={renderField}
-                label="Age"
-                validate={[required, number, minValue18]}
-                warn={tooOld}
+                label="Password"
+                validate={[required, minLength8]}
+                warn={password}
             />
             <div>
                 <button className="button base" type="submit" disabled={submitting}>Create Account</button>

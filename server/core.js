@@ -1,5 +1,6 @@
 import Middleware from './modules/middleware/Middleware';
 import Validate from './modules/tools/Validate';
+import Routes from './Routes/Routes';
 
 export default class Core {
     _initializeDatabase() {
@@ -14,15 +15,21 @@ export default class Core {
         this.tools.validate = new Validate();
     }
 
+    _initializeRoutes() {
+        this.routes = new Routes(this);
+    }
+
     init() {
         this._initializeDatabase();
         this._initializeMiddleware();
         this._initializeTools();
+        this._initializeRoutes();
     }
 
     constructor() {
         this.db = null;
         this.middleware = null;
+        this.routes = null;
         this.tools = {
             validate: null
         };

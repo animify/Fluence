@@ -1,5 +1,6 @@
 import Middleware from './modules/middleware/Middleware';
 import Validate from './modules/tools/Validate';
+import Db from './modules/db/db';
 import Routes from './Routes/Routes';
 
 export default class Core {

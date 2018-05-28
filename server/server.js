@@ -1,9 +1,9 @@
 import express from 'express';
-import Webpack from 'webpack';
 import passport from 'passport';
-import Core from './Core';
 import path from 'path';
+import Core from './Core';
 import Strategies from './modules/auth/strategies';
+
 
 const app = express();
 const core = new Core();

@@ -32,4 +32,4 @@ connection.once('open', () => {
     logger.info('Connected to MongoDB');
 });
 
-export default mongoServer;
+export default connection;

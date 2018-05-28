@@ -1,12 +1,12 @@
 import Middleware from './modules/middleware/Middleware';
 import Validate from './modules/tools/Validate';
 import Strategies from './modules/auth/Strategies';
-import './modules/db/db';
+import db from './modules/db/db';
 import Routes from './Routes/Routes';
 
 export default class Core {
     _initializeDatabase() {
-        this.db = null;
+        this.db = db;
     }
 
     _initializeMiddleware() {

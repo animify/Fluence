@@ -1,13 +1,15 @@
 import request from '../modules/Request';
 import History from '../modules/History';
-import { Pages } from '../store/actions';
+import { Pages, setAccount } from '../store/actions';
+import store from '../store';
 
 export default class Auth {
     static async signIn(formValues) {
         console.log('got values', formValues);
         request().post('/auth/signin', formValues).then((e) => {
+            console.log(e);
             if (e.request.status === 200) {
-                Auth.authenticateUser(e.request.response.token);
+                Auth.authenticateUser(e.request.response.user, e.request.response.token);
                 History.push(Pages.IDEAS);
             }
         });
@@ -18,16 +20,17 @@ export default class Auth {
         });
     }
 
-    static authenticateUser(token) {
+    static authenticateUser(user, token) {
+        store.dispatch(setAccount(user));
         localStorage.setItem('FLUENCE_USER_TOKEN', token);
     }
 
     static isUserAuthenticated() {
-        console.log('got token', localStorage.getItem('FLUENCE_USER_TOKEN'));
         return localStorage.getItem('FLUENCE_USER_TOKEN') !== null;
     }
 
     static deauthenticateUser() {
+        store.dispatch(setAccount(null));
         localStorage.removeItem('FLUENCE_USER_TOKEN');
     }
 

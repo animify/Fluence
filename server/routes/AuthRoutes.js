@@ -85,12 +85,15 @@ export default class AuthRoutes {
                     });
                 }
 
-                return req.logIn(user, () => res.json({
-                    success: true,
-                    message: 'You have successfully logged in!',
-                    token,
-                    user
-                }));
+                return req.login(user, (err) => {
+                    logger.error(req.user.email);
+                    return res.json({
+                        success: true,
+                        message: 'You have successfully logged in!',
+                        token,
+                        user
+                    });
+                });
             })(req, res, next);
         }
         );

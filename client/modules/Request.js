@@ -20,9 +20,9 @@ const client = () => {
             console.log(error.request.response);
         }
 
-        if (error.request.status === 401) {
-            History.push('/logout');
-        }
+        // if (error.request.status === 401) {
+        //     History.push('/logout');
+        // }
 
         return Promise.reject(error.request);
     });

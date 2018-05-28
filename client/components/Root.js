@@ -8,8 +8,20 @@ import App from '../pages/App';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
 import NotFound from '../pages/NotFound';
-import { Pages } from '../store/actions';
+import { Pages, setAccount } from '../store/actions';
 import AuthedRoute from './AuthedRoute';
+import request from '../modules/Request';
+import store from '../store';
+import { Auth } from '../Api';
+
+if (Auth.isUserAuthenticated()) {
+    request().get('/api/account')
+        .then((response) => {
+            store.dispatch(setAccount(response.data.user));
+        })
+        .catch(() => {
+        });
+}
 
 const Root = ({ store }) => (
     <Provider store={store}>

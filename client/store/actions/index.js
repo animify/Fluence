@@ -29,7 +29,8 @@ export const Pages = {
     IDEAS: '/ideas',
     POST_NEW_IDEA: '/newidea',
     SIGN_IN: '/signin',
-    SIGN_UP: '/signup'
+    SIGN_UP: '/signup',
+    ACCOUNT: '/account'
 };
 
 
@@ -50,6 +51,11 @@ export const setStatusFilter = filter => ({
 export const setVisiblePage = page => ({
     type: 'SET_VISIBLE_PAGE',
     page
+});
+
+export const setAccount = account => ({
+    type: 'SET_ACCOUNT',
+    account
 });
 
 export const toggleIdea = id => ({

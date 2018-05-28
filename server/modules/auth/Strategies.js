@@ -20,16 +20,22 @@ export default class Strategies {
     }
 
     _buildSerializer() {
-        passport.serializeUser((user, done) =>
-            done(null, {
-                _id: user._id,
-                agent: user.useragent,
+        passport.serializeUser((user, done) => {
+            logger.info('serializing user');
+            console.log(user);
+            return done(null, {
+                _id: user.id,
+                name: user.name,
+                email: user.email,
                 ip_address: user.ip_address
-            }));
+            });
+        });
 
         passport.deserializeUser((user, done) => {
-            models.User.findOne({ _id: user._id }, (err, u) => {
-                done(err, u);
+            logger.info(`deserializing user ${user._id} ${user.email}`);
+            models.User.findById(user._id, (err, u) => {
+                logger.info(`found user ${u}, ${err}`);
+                return done(null, u);
             });
         });
     }

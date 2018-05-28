@@ -11,10 +11,13 @@ import ExpressRequestId from 'express-request-id';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 import WebpackConfig from '../../../webpack.config.client';
+import { models } from 'mongoose';
+
+const MongoStore = require('connect-mongo')(Session);
 
 export default class Middleware {
-    constructor(brain) {
-        this.brain = brain;
+    constructor(core) {
+        this.core = core;
     }
 
     initialize(app) {
@@ -30,24 +33,36 @@ export default class Middleware {
             heartbeat: 10 * 1000
         }));
 
-        app.use(CookieParser())
+        const sessionStore = new MongoStore({ mongooseConnection: this.core.db, stringify: false, autoRemove: 'native' });
+
+        const eSession = Session({
+            key: 'connect.sid',
+            secret: 'secret',
+            store: sessionStore,
+            resave: true,
+            cookie: {
+                maxAge: 84600000
+            },
+            saveUninitialized: true
+        });
+
+        app.set('connection', this.core.db);
+        app.use(eSession)
+            .use(CookieParser())
             .use(Helmet())
             .use(ExpressRequestId())
-            .use(Session({
-                secret: 'keyboard',
-                cookie: {
-                    maxAge: 84600000
-                },
-                store: null,
-                resave: true,
-                saveUninitialized: true
-            }))
             .use(express.static('static'))
             .use(Cors())
             .use(BodyParser.urlencoded({ extended: true }))
             .use(BodyParser.json())
             .use(passport.initialize())
             .use(passport.session());
+
+        // app.use((req, res, next) => {
+        //     req.session._garbage = new Date().toISOString();
+        //     req.session.touch();
+        //     next();
+        // });
 
         return app;
     }
@@ -64,18 +79,12 @@ export default class Middleware {
                 return res.status(401).end();
             }
 
-            // this.brain.db.users
-            //     .filter({
-            //         _id: decoded.sub
-            //     })
-            //     .run()
-            //     .then((user) => {
-            //         if (!user) {
-            //             return res.status(401).end();
-            //         }
-
-            //         return next();
-            //     })
+            models.User.findOne({ _id: decoded.sub }, (err, u) => {
+                if (!u) {
+                    return res.status(401).end();
+                }
+                return next();
+            });
         });
     }
 }

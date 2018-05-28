@@ -43,7 +43,8 @@ export default class LocalSignInStrategy {
                     const data = {
                         id: user._id,
                         name: user.name,
-                        email: user.email
+                        email: user.email,
+                        ip_address: user.ip_address
                     };
 
                     return done(null, token, data);

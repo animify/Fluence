@@ -6,6 +6,7 @@ import History from './History';
 const client = () => {
     const token = Auth.getToken();
     const defaults = {
+        responseType: 'json',
         headers: {
             Authorization: token ? `bearer ${token}` : '',
             'Content-type': 'application/x-www-form-urlencoded'
@@ -15,15 +16,15 @@ const client = () => {
     axios.interceptors.response.use(response => response, (error) => {
         console.log('using response ----- ', error);
 
-        if (error.response.status === 400) {
-            console.log(error.response.data);
+        if (error.request.status === 400) {
+            console.log(error.request.response);
         }
 
-        if (error.response.status === 401) {
+        if (error.request.status === 401) {
             History.push('/logout');
         }
 
-        return Promise.reject(error.response);
+        return Promise.reject(error.request);
     });
 
     return {

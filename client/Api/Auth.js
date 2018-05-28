@@ -1,4 +1,3 @@
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 import request from '../modules/Request';
 
 export default class Auth {

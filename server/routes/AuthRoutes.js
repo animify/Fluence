@@ -1,5 +1,6 @@
 import express from 'express';
 import passport from 'passport';
+import logger from '../helpers/logger';
 
 export default class AuthRoutes {
     constructor(core) {
@@ -19,14 +20,14 @@ export default class AuthRoutes {
         this.router.post('/signup', (req, res, next) => {
             console.log(req.body);
 
-            const validationResult = this.core.tools.validate.validateSignUp(req.body);
-            if (!validationResult.success) {
-                return res.status(400).json({
-                    success: false,
-                    message: validationResult.message,
-                    errors: validationResult.errors
-                });
-            }
+            // const validationResult = this.core.tools.validate.validateSignUp(req.body);
+            // if (!validationResult.success) {
+            //     return res.status(400).json({
+            //         success: false,
+            //         message: validationResult.message,
+            //         errors: validationResult.errors
+            //     });
+            // }
 
             return passport.authenticate('local-signup', (err) => {
                 if (err) {
@@ -39,6 +40,8 @@ export default class AuthRoutes {
                             }
                         });
                     }
+
+                    logger.error(err);
 
                     return res.status(400).json({
                         success: false,

@@ -1,10 +1,10 @@
-import { model } from 'mongoose';
+import mongoose from 'mongoose';
 import AccessToken from './accessToken';
 import RefreshToken from './RefreshToken';
 import User from './User';
 
 export default {
-    AccessToken: model('AccessToken', AccessToken),
-    RefreshToken: model('RefreshToken', RefreshToken),
-    User: model('User', User)
+    AccessToken: mongoose.model('AccessToken', AccessToken),
+    RefreshToken: mongoose.model('RefreshToken', RefreshToken),
+    User: mongoose.model('User', User)
 };

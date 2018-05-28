@@ -2,11 +2,11 @@ import { Strategy } from 'passport-local';
 import jwt from 'jsonwebtoken';
 
 export default class LocalSignInStrategy {
-    constructor(core) {
-        this.strategy = this.createStrategy(core.db);
+    constructor() {
+        this.strategy = this.createStrategy();
     }
 
-    createStrategy(db) {
+    createStrategy() {
         return new Strategy({
             usernameField: 'email',
             passwordField: 'password',

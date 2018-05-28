@@ -3,20 +3,11 @@ import passportLocalMongoose from 'passport-local-mongoose';
 import bcrypt from 'bcrypt-nodejs';
 
 const User = new Schema({
-    username: {
-        type: String,
-        unique: true,
-        required: true
-    },
     avatar: {
         type: String,
         required: true
     },
-    firstname: {
-        type: String,
-        required: true
-    },
-    lastname: {
+    name: {
         type: String,
         required: true
     },
@@ -28,11 +19,6 @@ const User = new Schema({
     ip_address: {
         type: String
     },
-    location: {
-        city: String,
-        country: String,
-        code: String
-    },
     useragent: {
         type: Array
     },
@@ -43,9 +29,6 @@ const User = new Schema({
     salt: {
         type: String,
         required: true
-    },
-    workspace: {
-        type: String
     },
     created: {
         type: Date,

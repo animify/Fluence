@@ -1,6 +1,8 @@
 import passport from 'passport';
 import LocalSignupStrategy from './LocalSignupStrategy';
 import LocalLoginStrategy from './LocalSignInStrategy';
+import logger from '../../helpers/logger';
+import models from '../../models';
 
 export default class Strategies {
     constructor(core) {
@@ -12,21 +14,33 @@ export default class Strategies {
 
         this._buildSerializer();
         this._buildStrategies();
-    }
+        this._attachStrategies();
 
-    _buildStrategies() {
-        this.local.signup = new LocalSignupStrategy(this.core).strategy;
-        this.local.login = new LocalLoginStrategy(this.core).strategy;
+        return this;
     }
 
     _buildSerializer() {
-        passport.serializeUser((user, done) => done(null, user.id));
+        passport.serializeUser((user, done) =>
+            done(null, {
+                _id: user._id,
+                agent: user.useragent,
+                ip_address: user.ip_address
+            }));
 
-        passport.deserializeUser((id, done) => {
-            this.core.db.users
-                .get(id)
-                .run()
-                .then(user => done(null, user));
+        passport.deserializeUser((user, done) => {
+            models.User.findOne(user._id, (err, u) => {
+                done(err, u);
+            });
         });
+    }
+
+    _buildStrategies() {
+        this.local.signup = new LocalSignupStrategy();
+        this.local.login = new LocalLoginStrategy();
+    }
+
+    _attachStrategies() {
+        passport.use('local-signup', this.local.signup);
+        passport.use('local-login', this.local.login);
     }
 }

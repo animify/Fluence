@@ -1,18 +1,11 @@
 import express from 'express';
-import passport from 'passport';
 import path from 'path';
 import Core from './Core';
-import Strategies from './modules/auth/strategies';
-
 
 const app = express();
 const core = new Core();
-const strategies = new Strategies(core);
 
 app.use(express.static('static'));
-
-passport.use('local-signup', strategies.local.signup);
-passport.use('local-login', strategies.local.login);
 
 const appInit = core.middleware.initialize(app);
 appInit.use('/api', (req, res, next) => core.middleware.authed(req, res, next));

@@ -59,16 +59,18 @@ export default class AuthRoutes {
 
     _setSigninRoute() {
         this.router.post('/signin', (req, res, next) => {
-            const validationResult = this.core.tools.validate.validateSignIn(req.body);
-            if (!validationResult.success) {
-                return res.status(400).json({
-                    success: false,
-                    message: validationResult.message,
-                    errors: validationResult.errors
-                });
-            }
+            logger.info('got post signin');
+            // const validationResult = this.core.tools.validate.validateSignIn(req.body);
+            // if (!validationResult.success) {
+            //     return res.status(400).json({
+            //         success: false,
+            //         message: validationResult.message,
+            //         errors: validationResult.errors
+            //     });
+            // }
 
             return passport.authenticate('local-login', (err, token, user) => {
+                logger.info(`Authenticating ${err}, ${token}, ${user}`);
                 if (err) {
                     if (err.name === 'IncorrectCredentialsError') {
                         return res.status(400).json({
@@ -90,6 +92,7 @@ export default class AuthRoutes {
                     user
                 }));
             })(req, res, next);
-        });
+        }
+        );
     }
 }

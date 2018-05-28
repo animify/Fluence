@@ -28,7 +28,7 @@ export default class Strategies {
             }));
 
         passport.deserializeUser((user, done) => {
-            models.User.findOne(user._id, (err, u) => {
+            models.User.findOne({ _id: user._id }, (err, u) => {
                 done(err, u);
             });
         });

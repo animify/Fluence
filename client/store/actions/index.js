@@ -34,13 +34,17 @@ export const Pages = {
 };
 
 
-export const newIdea = (title, text, category) => ({
+export const newIdea = ({ _id, summary, details, category, by, upvotes, created_at, comments }) => ({
     type: 'NEW_IDEA',
-    id: shortid.generate(),
-    title,
+    _id,
+    summary,
     category,
+    details,
+    by,
+    upvotes,
+    created_at,
+    comments,
     status: IdeaStatus.PENDING_REVIEW,
-    text
 });
 
 export const setStatusFilter = filter => ({

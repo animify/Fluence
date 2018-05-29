@@ -6,7 +6,7 @@ const Ideas = ({ ideas, toggleIdea }) => (
     <Fragment>
         <ul className="list styled">
             {ideas.length > 0 ? ideas.map(idea =>
-                <Idea key={idea.id} {...idea} onClick={() => toggleIdea(idea.id)} />
+                <Idea key={idea._id} {...idea} onClick={() => toggleIdea(idea._id)} />
             ) :
                 <p>No ideas in here yet.</p>}
         </ul>
@@ -16,12 +16,13 @@ const Ideas = ({ ideas, toggleIdea }) => (
 Ideas.propTypes = {
     ideas: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            completed: PropTypes.bool.isRequired,
-            title: PropTypes.string.isRequired,
+            _id: PropTypes.string.isRequired,
+            summary: PropTypes.string.isRequired,
             category: PropTypes.string.isRequired,
             status: PropTypes.string.isRequired,
-            text: PropTypes.string.isRequired
+            upvotes: PropTypes.number.isRequired,
+            comments: PropTypes.array.isRequired,
+            details: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
     toggleIdea: PropTypes.func.isRequired

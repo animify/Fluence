@@ -15,14 +15,25 @@ export default class EndpointRoutes {
     }
 
     _setIdeaRoutes() {
-        this.router.post('/idea/new', (req, res) => {
+        this.router.post('/ideas/new', (req, res) => {
             logger.info('route hit /idea/new');
             const ua = req.useragent;
-            logger.info(JSON.stringify(req.body), ua);
 
             if (ua.isAuthoritative && !ua.isBot && !ua.isCurl) {
+                logger.info(JSON.stringify(req.body), ua);
 
-                // this.core.controllers.idea.new()
+                this.core.controllers.idea.new(req.body.summary, req.body.details, req.body.category, req.user._id)
+                    .then((idea) => {
+                        res.json({
+                            success: true,
+                            idea
+                        });
+                    }).catch((err) => {
+                        res.json({
+                            success: false,
+                            message: err
+                        });
+                    });
             } else {
                 res.json({
                     success: false,

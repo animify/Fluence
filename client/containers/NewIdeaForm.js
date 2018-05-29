@@ -38,7 +38,7 @@ const IdeaForm = ({ handleSubmit, pristine, reset, submitting }) => (
             validate={[required]}
         />
         <Field
-            name="Account"
+            name="category"
             type="select"
             component={renderSelect}
             label="Category"
@@ -49,7 +49,7 @@ const IdeaForm = ({ handleSubmit, pristine, reset, submitting }) => (
             <option name="Other" value="Other">Other</option>
         </Field>
         <Field
-            name="description"
+            name="details"
             type="textarea"
             component={renderTextarea}
             label="Describe your idea"

@@ -4,12 +4,7 @@ const ideas = (state = [], action) => {
             return [
                 ...state,
                 {
-                    id: action.id,
-                    title: action.title,
-                    text: action.text,
-                    category: action.category,
-                    status: action.status,
-                    completed: false
+                    ...action
                 }
             ];
         case 'TOGGLE_IDEA':

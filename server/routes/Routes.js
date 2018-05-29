@@ -12,7 +12,7 @@ export default class Routes {
 
         this._buildAuthRoutes(core);
         this._buildApiRoutes();
-        this._buildEndpointRoutes();
+        this._buildEndpointRoutes(core);
 
         return this.routes;
     }
@@ -25,7 +25,7 @@ export default class Routes {
         this.routes.api = new ApiRoutes();
     }
 
-    _buildEndpointRoutes() {
-        this.routes.endpoints = new EndpointRoutes();
+    _buildEndpointRoutes(core) {
+        this.routes.endpoints = new EndpointRoutes(core);
     }
 }

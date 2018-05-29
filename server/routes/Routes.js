@@ -1,5 +1,6 @@
 import AuthRoutes from './AuthRoutes';
 import ApiRoutes from './ApiRoutes';
+import EndpointRoutes from './EndpointRoutes';
 
 export default class Routes {
     constructor(core) {
@@ -11,6 +12,7 @@ export default class Routes {
 
         this._buildAuthRoutes(core);
         this._buildApiRoutes();
+        this._buildEndpointRoutes();
 
         return this.routes;
     }
@@ -21,5 +23,9 @@ export default class Routes {
 
     _buildApiRoutes() {
         this.routes.api = new ApiRoutes();
+    }
+
+    _buildEndpointRoutes() {
+        this.routes.endpoints = new EndpointRoutes();
     }
 }

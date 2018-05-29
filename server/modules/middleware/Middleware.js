@@ -10,8 +10,9 @@ import Session from 'express-session';
 import ExpressRequestId from 'express-request-id';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
+import useragent from 'express-useragent';
+import models from '../../models';
 import WebpackConfig from '../../../webpack.config.client';
-import { models } from 'mongoose';
 
 const MongoStore = require('connect-mongo')(Session);
 
@@ -51,18 +52,18 @@ export default class Middleware {
             .use(CookieParser())
             .use(Helmet())
             .use(ExpressRequestId())
+            .use(useragent.express())
             .use(express.static('static'))
             .use(Cors())
             .use(BodyParser.urlencoded({ extended: true }))
             .use(BodyParser.json())
             .use(passport.initialize())
-            .use(passport.session());
-
-        // app.use((req, res, next) => {
-        //     req.session._garbage = new Date().toISOString();
-        //     req.session.touch();
-        //     next();
-        // });
+            .use(passport.session())
+            .use((req, res, next) => {
+                req.session._garbage = new Date().toISOString();
+                req.session.touch();
+                next();
+            });
 
         return app;
     }

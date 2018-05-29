@@ -19,7 +19,6 @@ mongoServer.on('close', (code) => {
     logger.error(`MongoDB server exited with code: ${code}`);
 });
 
-
 mongoose.connect(dbConfig.mongodb.uri);
 
 const connection = mongoose.connection;

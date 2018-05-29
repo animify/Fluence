@@ -1,5 +1,7 @@
 import React from 'react';
-import NewIdea from '../containers/NewIdea';
+import NewIdeaForm from '../containers/NewIdeaForm';
+import { Ideas } from '../Api';
+// import NewIdea from '../containers/NewIdea';
 
 const PostIdeaModal = () => (
     <div className="modal-container overlay" modal-name="post-idea">
@@ -11,7 +13,8 @@ const PostIdeaModal = () => (
                 <p>Thought of something awesome? Share it with the team at Fluence.</p>
             </div>
             <div className="body">
-                <NewIdea />
+                <NewIdeaForm onSubmit={Ideas.new} />
+                {/* <NewIdea /> */}
             </div>
         </div>
     </div>

@@ -9,14 +9,16 @@ const core = new Core();
 app.use(express.static('static'));
 
 const appInit = core.middleware.initialize(app);
+
+appInit.use('/api', (req, res, next) => core.middleware.authed(req, res, next), core.routes.api);
+appInit.use('/auth', core.routes.auth);
+appInit.use('/endpoint', core.routes.endpoints);
+
 app.get('/api', (req, res) => {
     res.json({
         message: req.user
     });
 });
-appInit.use('/api', (req, res, next) => core.middleware.authed(req, res, next), core.routes.api);
-appInit.use('/auth', core.routes.auth);
-
 
 app.get('*', (req, res) => {
     logger.info(`req user ${req.user}`);

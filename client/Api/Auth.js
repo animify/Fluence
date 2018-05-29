@@ -22,19 +22,23 @@ export default class Auth {
 
     static authenticateUser(user, token) {
         store.dispatch(setAccount(user));
-        localStorage.setItem('FLUENCE_USER_TOKEN', token);
+        localStorage.setItem(Auth.tokenName, token);
     }
 
     static isUserAuthenticated() {
-        return localStorage.getItem('FLUENCE_USER_TOKEN') !== null;
+        return localStorage.getItem(Auth.tokenName) !== null;
     }
 
     static deauthenticateUser() {
         store.dispatch(setAccount(null));
-        localStorage.removeItem('FLUENCE_USER_TOKEN');
+        localStorage.removeItem(Auth.tokenName);
     }
 
     static getToken() {
-        return localStorage.getItem('FLUENCE_USER_TOKEN');
+        return localStorage.getItem(Auth.tokenName);
+    }
+
+    static get tokenName() {
+        return 'FLUENCE_USER_TOKEN';
     }
 }

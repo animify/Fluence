@@ -12,8 +12,11 @@ const client = () => {
             'Content-type': 'application/x-www-form-urlencoded'
         }
     };
+    const axiosInstance = axios.create({
+        timeout: 10000,
+    });
 
-    axios.interceptors.response.use(response => response, (error) => {
+    axiosInstance.interceptors.response.use(response => response, (error) => {
         console.log('using response ----- ', error);
 
         if (error.request.status === 400) {
@@ -28,10 +31,10 @@ const client = () => {
     });
 
     return {
-        get: (url, props = {}) => axios.get(url, { ...defaults, ...props }),
-        post: (url, data, props = {}) => axios.post(url, qs.stringify(data), { ...defaults, ...props }),
-        put: (url, data, props = {}) => axios.put(url, qs.stringify(data), { ...defaults, ...props }),
-        delete: (url, props = {}) => axios.delete(url, { ...defaults, ...props }),
+        get: (url, props = {}) => axiosInstance.get(url, { ...defaults, ...props }),
+        post: (url, data, props = {}) => axiosInstance.post(url, qs.stringify(data), { ...defaults, ...props }),
+        put: (url, data, props = {}) => axiosInstance.put(url, qs.stringify(data), { ...defaults, ...props }),
+        delete: (url, props = {}) => axiosInstance.delete(url, { ...defaults, ...props }),
     };
 };
 

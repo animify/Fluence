@@ -3,34 +3,42 @@ import Validate from './modules/tools/Validate';
 import Strategies from './modules/auth/Strategies';
 import db from './modules/db/db';
 import Routes from './Routes/Routes';
+import { IdeaController } from './controllers';
 
 export default class Core {
-    _initializeDatabase() {
+    initializeDatabase() {
         this.db = db;
     }
 
-    _initializeMiddleware() {
+    initializeMiddleware() {
         this.middleware = new Middleware(this);
     }
 
-    _initializeTools() {
+    initializeTools() {
         this.tools.validate = new Validate();
     }
 
-    _initializeRoutes() {
+    initializeRoutes() {
         this.routes = new Routes(this);
     }
 
-    _initializeStrategies() {
+    initializeStrategies() {
         this.strategies = new Strategies(this);
     }
 
+    initializeControllers() {
+        this.controllers = {
+            idea: IdeaController
+        };
+    }
+
     init() {
-        this._initializeDatabase();
-        this._initializeStrategies();
-        this._initializeMiddleware();
-        this._initializeTools();
-        this._initializeRoutes();
+        this.initializeDatabase();
+        this.initializeStrategies();
+        this.initializeMiddleware();
+        this.initializeTools();
+        this.initializeRoutes();
+        this.initializeControllers();
     }
 
     constructor() {
@@ -41,6 +49,7 @@ export default class Core {
         this.tools = {
             validate: null
         };
+        this.controllers = null;
 
         this.init();
     }

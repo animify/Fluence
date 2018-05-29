@@ -24,4 +24,19 @@ export default class IdeaController {
             });
         });
     }
+
+    static get() {
+        return new Promise((resolve, reject) => {
+            models.Idea.find({}, (err, ideas) => {
+                logger.error(err);
+                logger.info(ideas);
+
+                if (err) {
+                    return reject(err);
+                }
+
+                resolve(ideas);
+            });
+        });
+    }
 }

@@ -33,18 +33,22 @@ export const Pages = {
     ACCOUNT: '/account'
 };
 
-
-export const newIdea = ({ _id, summary, details, category, by, upvotes, created_at, comments }) => ({
+export const newIdea = ({ _id, summary, details, status, category, by, upvotes, created_at, comments }) => ({
     type: 'NEW_IDEA',
     _id,
     summary,
+    status,
     category,
     details,
     by,
     upvotes,
     created_at,
     comments,
-    status: IdeaStatus.PENDING_REVIEW,
+});
+
+export const setIdeas = ideas => ({
+    type: 'SET_IDEAS',
+    ideas
 });
 
 export const setStatusFilter = filter => ({

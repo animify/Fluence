@@ -35,7 +35,7 @@ Idea.propTypes = {
     onClick: PropTypes.func.isRequired,
     summary: PropTypes.string.isRequired,
     details: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
+    status: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
     upvotes: PropTypes.number.isRequired,
     comments: PropTypes.array.isRequired,

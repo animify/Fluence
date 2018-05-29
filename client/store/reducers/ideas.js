@@ -7,6 +7,10 @@ const ideas = (state = [], action) => {
                     ...action
                 }
             ];
+
+        case 'SET_IDEAS':
+            return [...action.ideas];
+
         case 'TOGGLE_IDEA':
             return state.map((idea) => {
                 if (idea.id === action.id) {

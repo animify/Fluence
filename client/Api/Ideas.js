@@ -13,4 +13,15 @@ export default class Ideas {
             }
         });
     }
+
+    static async get() {
+        return new Promise((resolve, reject) => {
+            request().get('/endpoint/ideas').then((e) => {
+                console.log(e);
+                if (e.request.status === 200) {
+                    resolve(e.data.ideas);
+                }
+            });
+        });
+    }
 }

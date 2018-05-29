@@ -8,11 +8,11 @@ import App from '../pages/App';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
 import NotFound from '../pages/NotFound';
-import { Pages, setAccount } from '../store/actions';
+import { Pages, setAccount, setIdeas } from '../store/actions';
 import AuthedRoute from './AuthedRoute';
 import request from '../modules/Request';
 import store from '../store';
-import { Auth } from '../Api';
+import { Auth, Ideas } from '../Api';
 
 if (Auth.isUserAuthenticated()) {
     request().get('/api/account')
@@ -21,6 +21,10 @@ if (Auth.isUserAuthenticated()) {
         })
         .catch(() => {
         });
+
+    Ideas.get().then((ideas) => {
+        store.dispatch(setIdeas(ideas));
+    });
 }
 
 const Root = ({ store }) => (

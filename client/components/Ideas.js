@@ -19,7 +19,7 @@ Ideas.propTypes = {
             _id: PropTypes.string.isRequired,
             summary: PropTypes.string.isRequired,
             category: PropTypes.string.isRequired,
-            status: PropTypes.string.isRequired,
+            status: PropTypes.number.isRequired,
             upvotes: PropTypes.number.isRequired,
             comments: PropTypes.array.isRequired,
             details: PropTypes.string.isRequired

@@ -10,7 +10,6 @@ const Nav = () => (
                 <NavLink page={Pages.IDEAS}>Fluence</NavLink>
                 <div className="float-right">
                     <NavLink page={Pages.IDEAS}>Ideas</NavLink>
-                    <NavLink page={Pages.POST_NEW_IDEA}>Post Idea</NavLink>
                     <NavAccount />
                 </div>
             </ul>

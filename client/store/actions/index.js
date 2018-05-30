@@ -27,7 +27,8 @@ export const FilterNames = {
 
 export const Pages = {
     IDEAS: '/ideas',
-    POST_NEW_IDEA: '/newidea',
+    ROADMAP: '/roadmap',
+    NEW_IDEA: '/ideas/new',
     SIGN_IN: '/signin',
     SIGN_UP: '/signup',
     ACCOUNT: '/account'

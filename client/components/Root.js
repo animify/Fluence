@@ -13,6 +13,7 @@ import AuthedRoute from './AuthedRoute';
 import request from '../modules/Request';
 import store from '../store';
 import { Auth, Ideas } from '../Api';
+import NewIdea from '../pages/NewIdea';
 
 if (Auth.isUserAuthenticated()) {
     request().get('/api/account')
@@ -23,15 +24,16 @@ if (Auth.isUserAuthenticated()) {
         });
 
     Ideas.get().then((ideas) => {
-        store.dispatch(setIdeas(ideas));
+        store.dispatch(setIdeas(ideas.reverse()));
     });
 }
 
-const Root = ({ store }) => (
+const Root = () => (
     <Provider store={store}>
         <ConnectedRouter history={History}>
             <Switch>
                 <AuthedRoute path={Pages.IDEAS} exact component={App} />
+                <AuthedRoute path={Pages.NEW_IDEA} component={NewIdea} />
                 <Route path={Pages.SIGN_UP} component={SignUp} />
                 <Route path={Pages.SIGN_IN} component={SignIn} />
                 <Route path="*" component={NotFound} />
@@ -39,9 +41,5 @@ const Root = ({ store }) => (
         </ConnectedRouter>
     </Provider>
 );
-
-Root.propTypes = {
-    store: PropTypes.object.isRequired
-};
 
 export default Root;

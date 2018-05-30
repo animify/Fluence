@@ -2,11 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import '@fluence-stylekit/kit';
-import store from './store';
 import Root from './components/Root';
 
-
-const initialRoot = <Root store={store} />;
+const initialRoot = <Root />;
 
 const r = Component =>
     render(

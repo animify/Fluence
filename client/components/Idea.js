@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ChevronUp } from 'react-feather';
+import { ChevronUp, MessageCircle } from 'react-feather';
 
 const Idea = ({ onClick, summary, details, category, status, upvotes, comments }) => (
     <li className="item">
@@ -9,21 +9,18 @@ const Idea = ({ onClick, summary, details, category, status, upvotes, comments }
             <h4>{upvotes}</h4>
         </div>
         <div className="details">
-            <a className="link link-dark" role="presentation" onClick={onClick}><h5>{summary}</h5></a>
+            <a className="link link-dark" role="presentation" onClick={onClick}><h6>{summary}</h6></a>
             <p>{details}</p>
             <div className="meta">
                 <ul className="list horizontal">
                     <li className="item">
-                        <small><strong>{comments.length}</strong> comments</small>
+                        <small><MessageCircle color="#0050ff" size={16} /><strong>{comments.length}</strong> comments</small>
                     </li>
                     <li className="item">
                         <small>{status}</small>
                     </li>
                     <li className="item">
                         <small>{category}</small>
-                    </li>
-                    <li className="item">
-                        <small><a>Flag as innappropriate</a></small>
                     </li>
                 </ul>
             </div>

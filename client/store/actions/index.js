@@ -1,10 +1,15 @@
-import shortid from 'shortid';
-
 export const IdeaStatus = {
     PENDING_REVIEW: 'Pending Review',
     PLANNED: 'Planned',
     IN_PROGRESS: 'In Progress',
     COMPLETED: 'Completed'
+};
+
+export const StatusMap = {
+    0: 'SHOW_PENDING_REVIEW',
+    1: 'SHOW_PLANNED',
+    2: 'SHOW_IN_PROGRESS',
+    3: 'SHOW_COMPLETED',
 };
 
 export const StatusFilters = {

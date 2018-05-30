@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ChevronUp, MessageCircle } from 'react-feather';
+import { StatusMap, FilterNames } from '../store/actions';
 
 const Idea = ({ onClick, summary, details, category, status, upvotes, comments }) => (
     <li className="item">
@@ -9,18 +10,12 @@ const Idea = ({ onClick, summary, details, category, status, upvotes, comments }
             <h4>{upvotes}</h4>
         </div>
         <div className="details">
-            <a className="link link-dark" role="presentation" onClick={onClick}><h6>{summary}</h6></a>
+            <a className="link link-dark" role="presentation" onClick={onClick}><h6><span className="smoke@text">{category} :: </span>{summary}</h6></a>
             <p>{details}</p>
             <div className="meta">
                 <ul className="list horizontal">
-                    <li className="item">
-                        <small><MessageCircle color="#0050ff" size={16} /><strong>{comments.length}</strong> comments</small>
-                    </li>
-                    <li className="item">
-                        <small>{status}</small>
-                    </li>
-                    <li className="item">
-                        <small>{category}</small>
+                    <li className="item status" type={StatusMap[status]}>
+                        <small>{FilterNames[StatusMap[status]]}</small>
                     </li>
                 </ul>
             </div>

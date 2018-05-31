@@ -68,5 +68,32 @@ export default class EndpointRoutes {
                 });
             }
         });
+
+        this.router.get('/ideas/:ideaId', (req, res) => {
+            logger.info('route hit /idea/new');
+            const ua = req.useragent;
+
+            if (ua.isAuthoritative && !ua.isBot && !ua.isCurl) {
+                logger.info(JSON.stringify(req.body), ua);
+
+                this.core.controllers.idea.getOne(req.params.ideaId)
+                    .then((idea) => {
+                        res.json({
+                            success: true,
+                            idea
+                        });
+                    }).catch((err) => {
+                        res.json({
+                            success: false,
+                            message: err
+                        });
+                    });
+            } else {
+                res.json({
+                    success: false,
+                    message: 'Invalid incremement recieved.'
+                });
+            }
+        });
     }
 }

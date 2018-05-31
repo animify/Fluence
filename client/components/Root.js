@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'react-router-redux';
@@ -14,6 +13,7 @@ import request from '../modules/Request';
 import store from '../store';
 import { Auth, Ideas } from '../Api';
 import NewIdea from '../pages/NewIdea';
+import Idea from '../pages/Idea';
 
 if (Auth.isUserAuthenticated()) {
     request().get('/api/account')
@@ -34,6 +34,7 @@ const Root = () => (
             <Switch>
                 <AuthedRoute path={Pages.IDEAS} exact component={App} />
                 <AuthedRoute path={Pages.NEW_IDEA} component={NewIdea} />
+                <AuthedRoute path={Pages.IDEA} component={Idea} />
                 <Route path={Pages.SIGN_UP} component={SignUp} />
                 <Route path={Pages.SIGN_IN} component={SignIn} />
                 <Route path="*" component={NotFound} />

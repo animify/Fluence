@@ -6,7 +6,7 @@ const Ideas = ({ ideas, toggleIdea }) => (
     <Fragment>
         <ul className="list styled">
             {ideas.length > 0 ? ideas.map(idea =>
-                <Idea key={idea._id} {...idea} onClick={() => toggleIdea(idea._id)} />
+                <Idea key={idea._id} {...idea} />
             ) :
                 <p>No ideas in here yet.</p>}
         </ul>

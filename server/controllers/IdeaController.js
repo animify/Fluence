@@ -39,4 +39,20 @@ export default class IdeaController {
             });
         });
     }
+
+    static getOne(ideaId) {
+        logger.info(`getting idea ${ideaId}`);
+        return new Promise((resolve, reject) => {
+            models.Idea.findOne({ _id: ideaId }, (err, idea) => {
+                logger.error(err);
+                logger.info(idea);
+
+                if (err) {
+                    return reject(err);
+                }
+
+                resolve(idea);
+            });
+        });
+    }
 }

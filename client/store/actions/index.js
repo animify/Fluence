@@ -31,6 +31,7 @@ export const FilterNames = {
 };
 
 export const Pages = {
+    IDEA: '/ideas/:idea',
     IDEAS: '/ideas',
     ROADMAP: '/roadmap',
     NEW_IDEA: '/ideas/new',
@@ -68,6 +69,11 @@ export const setVisiblePage = page => ({
 });
 
 export const setAccount = account => ({
+    type: 'SET_ACCOUNT',
+    account
+});
+
+export const viewingIdea = account => ({
     type: 'SET_ACCOUNT',
     account
 });

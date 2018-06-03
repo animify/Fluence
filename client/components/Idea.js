@@ -7,8 +7,8 @@ import { StatusMap, FilterNames } from '../store/actions';
 const Idea = ({ _id, summary, details, category, status, upvotes, comments }) => (
     <li className="item">
         <div className="upvote">
-            <ChevronUp color="#0050ff" />
-            <h4>{upvotes}</h4>
+            <ChevronUp />
+            <h5>{upvotes}</h5>
         </div>
         <div className="details">
             <Link to={`/ideas/${_id}`} className="link link-dark" role="presentation"><h6><span className="smoke@text">{category} :: </span>{summary}</h6></Link>

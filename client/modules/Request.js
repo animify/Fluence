@@ -2,6 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 import { Auth } from '../Api';
 import History from './History';
+import { Pages } from '../store/actions';
 
 const client = () => {
     const token = Auth.getToken();
@@ -23,9 +24,9 @@ const client = () => {
             console.log(error.request.response);
         }
 
-        // if (error.request.status === 401) {
-        //     History.push('/logout');
-        // }
+        if (error.request.status === 401) {
+            History.push(Pages.LOGOUT);
+        }
 
         return Promise.reject(error.request);
     });

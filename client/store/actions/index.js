@@ -31,12 +31,14 @@ export const FilterNames = {
 };
 
 export const Pages = {
+    HOME: '/',
     IDEA: '/ideas/:idea',
     IDEAS: '/ideas',
     ROADMAP: '/roadmap',
     NEW_IDEA: '/ideas/new',
     SIGN_IN: '/signin',
     SIGN_UP: '/signup',
+    LOGOUT: '/logout',
     ACCOUNT: '/account'
 };
 

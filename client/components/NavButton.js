@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const NavButton = ({ active, children, page }) => (
-    <li className={active ? 'active' : null}>
+    <li className={active ? 'active item' : 'item'}>
         <Link to={page} role="presentation">{children}</Link>
     </li>
 );

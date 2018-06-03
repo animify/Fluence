@@ -11,7 +11,7 @@ export default class Ideas {
             console.log(e);
             if (e.request.status === 200) {
                 store.dispatch(newIdea(e.data.idea));
-                History.push(Pages.IDEAS);
+                History.push(`${Pages.IDEAS}/${e.data.idea._id}`);
             }
         });
     }

@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import NavLink from './NavLink';
-import { Pages } from '../store/actions';
+import { PageRoutes } from '../store/actions';
 
 const Nav = () => (
     <header>
         <div className="container">
             <ul className="menu horizontal">
-                <NavLink page={Pages.IDEAS}>Fluence</NavLink>
+                <NavLink page={PageRoutes.IDEAS}>Fluence</NavLink>
                 <div className="float-right">
-                    <NavLink page={Pages.IDEAS}>Ideas</NavLink>
+                    <NavLink page={PageRoutes.IDEAS}>Ideas</NavLink>
                     <NavAccount />
                 </div>
             </ul>
@@ -20,11 +20,11 @@ const Nav = () => (
 let NavAccount = ({ account }) => (
     account == null ? (
         <Fragment>
-            <NavLink page={Pages.SIGN_IN}>Sign In</NavLink>
-            <NavLink page={Pages.SIGN_UP}>Create Account</NavLink>
+            <NavLink page={PageRoutes.SIGN_IN}>Sign In</NavLink>
+            <NavLink page={PageRoutes.SIGN_UP}>Create Account</NavLink>
         </Fragment>
     ) : (
-            <NavLink page={Pages.ACCOUNT}>{account.name}</NavLink>
+            <NavLink page={PageRoutes.ACCOUNT}>{account.name}</NavLink>
         )
 );
 

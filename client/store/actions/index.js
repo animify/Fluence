@@ -30,7 +30,7 @@ export const FilterNames = {
     [StatusFilters.SHOW_ACTIVE]: 'Active',
 };
 
-export const Pages = {
+export const PageRoutes = {
     HOME: '/',
     IDEA: '/ideas/:idea',
     IDEAS: '/ideas',

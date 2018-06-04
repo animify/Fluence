@@ -2,19 +2,21 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'react-router-redux';
-import History from '../modules/History';
-import { Pages, setAccount } from '../store/actions';
-import AuthedRoute from './AuthedRoute';
 import request from '../modules/Request';
+import History from '../modules/History';
+import { PageRoutes, setAccount } from '../store/actions';
+import AuthedRoute from './AuthedRoute';
 import store from '../store';
 import { Auth } from '../Api';
-import NewIdea from '../pages/NewIdea';
-import IdeaPage from '../pages/IdeaPage';
-import IdeasPage from '../pages/IdeasPage';
-import SignUp from '../pages/SignUp';
-import SignIn from '../pages/SignIn';
-import LogoutPage from '../pages/LogoutPage';
-import NotFound from '../pages/NotFound';
+import {
+    NewIdeaPage,
+    IdeaPage,
+    IdeasPage,
+    SignUpPage,
+    SignInPage,
+    LogoutPage,
+    NotFoundPage
+} from '../pages';
 
 if (Auth.isUserAuthenticated()) {
     request().get('/api/account')
@@ -30,13 +32,13 @@ const Root = () => (
     <Provider store={store}>
         <ConnectedRouter history={History}>
             <Switch>
-                <AuthedRoute path={Pages.IDEAS} exact component={IdeasPage} />
-                <AuthedRoute path={Pages.NEW_IDEA} component={NewIdea} />
-                <AuthedRoute path={Pages.IDEA} component={IdeaPage} />
-                <Route path={Pages.SIGN_UP} component={SignUp} />
-                <Route path={Pages.SIGN_IN} component={SignIn} />
-                <Route path={Pages.LOGOUT} component={LogoutPage} />
-                <Route path="*" component={NotFound} />
+                <AuthedRoute path={PageRoutes.IDEAS} exact component={IdeasPage} />
+                <AuthedRoute path={PageRoutes.NEW_IDEA} component={NewIdeaPage} />
+                <AuthedRoute path={PageRoutes.IDEA} component={IdeaPage} />
+                <Route path={PageRoutes.SIGN_UP} component={SignUpPage} />
+                <Route path={PageRoutes.SIGN_IN} component={SignInPage} />
+                <Route path={PageRoutes.LOGOUT} component={LogoutPage} />
+                <Route path="*" component={NotFoundPage} />
             </Switch>
         </ConnectedRouter>
     </Provider>

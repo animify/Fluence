@@ -1,6 +1,6 @@
-import { Pages } from '../actions';
+import { PageRoutes } from '../actions';
 
-const visiblePage = (state = Pages.IDEAS, action) => {
+const visiblePage = (state = PageRoutes.IDEAS, action) => {
     switch (action.type) {
         case 'SET_VISIBLE_PAGE':
             return action.page;

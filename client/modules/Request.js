@@ -2,7 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 import { Auth } from '../Api';
 import History from './History';
-import { Pages } from '../store/actions';
+import { PageRoutes } from '../store/actions';
 
 const client = () => {
     const token = Auth.getToken();
@@ -25,7 +25,7 @@ const client = () => {
         }
 
         if (error.request.status === 401) {
-            History.push(Pages.LOGOUT);
+            History.push(PageRoutes.LOGOUT);
         }
 
         return Promise.reject(error.request);

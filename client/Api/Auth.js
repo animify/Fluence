@@ -1,6 +1,6 @@
 import request from '../modules/Request';
 import History from '../modules/History';
-import { Pages, setAccount } from '../store/actions';
+import { PageRoutes, setAccount } from '../store/actions';
 import store from '../store';
 
 export default class Auth {
@@ -10,7 +10,7 @@ export default class Auth {
             console.log(e);
             if (e.request.status === 200) {
                 Auth.authenticateUser(e.request.response.user, e.request.response.token);
-                History.push(Pages.IDEAS);
+                History.push(PageRoutes.IDEAS);
             }
         });
     }

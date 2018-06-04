@@ -3,7 +3,7 @@ import NewIdeaForm from '../containers/NewIdeaForm';
 import Ideas from '../Api/Ideas';
 import Sidebar from '../containers/Sidebar';
 
-const NewIdea = () => (
+const NewIdeaPage = () => (
     <Fragment>
         <Sidebar />
         <div className="layout">
@@ -18,4 +18,4 @@ const NewIdea = () => (
     </Fragment>
 );
 
-export default NewIdea;
+export default NewIdeaPage;

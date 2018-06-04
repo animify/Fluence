@@ -1,6 +1,6 @@
 import request from '../modules/Request';
 import store from '../store';
-import { newIdea, Pages } from '../store/actions';
+import { newIdea, PageRoutes } from '../store/actions';
 import History from '../modules/History';
 
 export default class Ideas {
@@ -11,7 +11,7 @@ export default class Ideas {
             console.log(e);
             if (e.request.status === 200) {
                 store.dispatch(newIdea(e.data.idea));
-                History.push(`${Pages.IDEAS}/${e.data.idea._id}`);
+                History.push(`${PageRoutes.IDEAS}/${e.data.idea._id}`);
             }
         });
     }

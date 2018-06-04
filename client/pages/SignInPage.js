@@ -1,20 +1,20 @@
 import React, { Fragment } from 'react';
 import Nav from '../containers/Nav';
-import SignUpForm from '../containers/SignUpForm';
+import SignInForm from '../containers/SignInForm';
 import { Auth } from '../Api';
 
-const SignUp = () => (
+const SignInPage = () => (
     <Fragment>
         <Nav />
         <div className="layout">
             <div className="container">
-                <h2>Create Account</h2>
+                <h2>Sign In</h2>
                 <main>
-                    <SignUpForm onSubmit={Auth.signUp} />
+                    <SignInForm onSubmit={Auth.signIn} />
                 </main>
             </div>
         </div>
     </Fragment>
 );
 
-export default SignUp;
+export default SignInPage;

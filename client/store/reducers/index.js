@@ -4,14 +4,14 @@ import { routerReducer } from 'react-router-redux';
 import ideas from './ideas';
 import statusFilter from './statusFilter';
 import visiblePage from './visiblePage';
-import viewIdea from './viewIdea';
+import visibleIdea from './visibleIdea';
 import account from './account';
 
 export default combineReducers({
     account,
     form: formReducer,
     router: routerReducer,
-    viewIdea,
+    visibleIdea,
     ideas,
     statusFilter,
     visiblePage

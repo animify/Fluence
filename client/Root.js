@@ -2,12 +2,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'react-router-redux';
-import request from '../modules/Request';
-import History from '../modules/History';
-import { PageRoutes, setAccount } from '../store/actions';
-import AuthedRoute from './AuthedRoute';
-import store from '../store';
-import { Auth } from '../Api';
+import request from './modules/Request';
+import History from './modules/History';
+import { PageRoutes, setAccount } from './store/actions';
+import AuthedRoute from './components/AuthedRoute';
+import store from './store';
+import { Auth } from './Api';
 import {
     NewIdeaPage,
     IdeaPage,
@@ -16,7 +16,7 @@ import {
     SignInPage,
     LogoutPage,
     NotFoundPage
-} from '../pages';
+} from './pages';
 
 if (Auth.isUserAuthenticated()) {
     request().get('/api/account')

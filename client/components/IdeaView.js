@@ -20,6 +20,10 @@ const IdeaView = ({ idea }) => (
     </Fragment>
 );
 
+IdeaView.defaultProps = {
+    idea: undefined
+};
+
 IdeaView.propTypes = {
     idea: PropTypes.shape({
         _id: PropTypes.string.isRequired,

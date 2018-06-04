@@ -75,8 +75,8 @@ export const setAccount = account => ({
     account
 });
 
-export const viewIdea = idea => ({
-    type: 'VIEW_IDEA',
+export const setVisibleIdea = idea => ({
+    type: 'SET_VISIBLE_IDEA',
     idea
 });
 

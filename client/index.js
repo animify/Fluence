@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import '@fluence-stylekit/kit';
-import Root from './components/Root';
+import Root from './Root';
 
 const initialRoot = <Root />;
 
@@ -15,4 +15,4 @@ const r = Component =>
     );
 
 r(initialRoot);
-if (module.hot) module.hot.accept('./components/Root', () => r(initialRoot));
+if (module.hot) module.hot.accept('./Root', () => r(initialRoot));

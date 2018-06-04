@@ -1,6 +1,6 @@
-const viewIdea = (state = null, action) => {
+const visibleIdea = (state = null, action) => {
     switch (action.type) {
-        case 'VIEW_IDEA':
+        case 'SET_VISIBLE_IDEA':
             return action.idea;
 
         default:
@@ -8,4 +8,4 @@ const viewIdea = (state = null, action) => {
     }
 };
 
-export default viewIdea;
+export default visibleIdea;

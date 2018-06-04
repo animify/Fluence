@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import Sidebar from '../containers/Sidebar';
 import { Ideas } from '../Api';
-import { viewIdea } from '../store/actions';
+import { setVisibleIdea } from '../store/actions';
 import store from '../store';
 import VisibleIdea from '../containers/VisibleIdea';
 
 const IdeaPage = ({ match }) => {
     Ideas.getOne(match.params.idea).then((i) => {
-        store.dispatch(viewIdea(i));
+        store.dispatch(setVisibleIdea(i));
     });
 
     return (

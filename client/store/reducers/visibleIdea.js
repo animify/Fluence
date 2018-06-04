@@ -3,6 +3,10 @@ const visibleIdea = (state = null, action) => {
         case 'SET_VISIBLE_IDEA':
             return action.idea;
 
+        case 'UPDATE_IDEA':
+            console.log('azza', state, action.idea);
+            return action.idea;
+
         default:
             return state;
     }

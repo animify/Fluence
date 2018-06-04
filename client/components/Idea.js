@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ChevronUp } from 'react-feather';
-import { StatusMap, FilterNames } from '../store/actions';
+import { StatusMap, StatusText } from '../store/actions';
 
 const Idea = ({ _id, summary, details, category, status, upvotes, comments }) => (
     <li className="item">
@@ -16,7 +16,7 @@ const Idea = ({ _id, summary, details, category, status, upvotes, comments }) =>
             <div className="meta">
                 <ul className="list horizontal">
                     <li className="item status" type={StatusMap[status]}>
-                        <small>{FilterNames[StatusMap[status]]}</small>
+                        <small>{StatusText[StatusMap[status]]}</small>
                     </li>
                 </ul>
             </div>

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { StatusMap, FilterNames } from '../store/actions';
+import { StatusMap, StatusText } from '../store/actions';
 import IdeaAdmin from '../containers/IdeaAdmin';
 
 const IdeaView = ({ idea }) => (
@@ -9,7 +9,10 @@ const IdeaView = ({ idea }) => (
             <Fragment>
                 <h4><span className="smoke@text">{idea.category} :: </span> {idea.summary}</h4>
                 <div className="status" type={StatusMap[idea.status]}>
-                    <small>{FilterNames[StatusMap[idea.status]]}</small>
+                    <small>{StatusText[StatusMap[idea.status]]}</small>
+                </div>
+                <div className="category">
+                    <small>{idea.category}</small>
                 </div>
                 <div className="admin">
                     <IdeaAdmin idea={idea} />

@@ -8,15 +8,6 @@ const ideas = (state = [], action) => {
                 }
             ];
 
-        case 'UPDATE_IDEA':
-            return state.map((idea) => {
-                if (idea._id === action.idea._id) {
-                    return { ...idea, ...action.idea };
-                }
-
-                return idea;
-            });
-
         case 'SET_IDEAS':
             return [...action.ideas];
 

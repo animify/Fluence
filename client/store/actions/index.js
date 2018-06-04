@@ -21,7 +21,7 @@ export const StatusFilters = {
     SHOW_ACTIVE: 'SHOW_ACTIVE'
 };
 
-export const FilterNames = {
+export const StatusText = {
     [StatusFilters.SHOW_ALL]: 'All',
     [StatusFilters.SHOW_PENDING_REVIEW]: IdeaStatus.PENDING_REVIEW,
     [StatusFilters.SHOW_PLANNED]: IdeaStatus.PLANNED,

@@ -5,7 +5,7 @@ import IdeaAdmin from '../containers/IdeaAdmin';
 
 const IdeaView = ({ idea }) => (
     <Fragment>
-        {idea &&
+        {idea != null &&
             <Fragment>
                 <h4><span className="smoke@text">{idea.category} :: </span> {idea.summary}</h4>
                 <div className="status" type={StatusMap[idea.status]}>

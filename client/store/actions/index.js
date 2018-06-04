@@ -55,6 +55,11 @@ export const newIdea = ({ _id, summary, details, status, category, by, upvotes, 
     comments,
 });
 
+export const updateIdea = idea => ({
+    type: 'UPDATE_IDEA',
+    idea
+});
+
 export const setIdeas = ideas => ({
     type: 'SET_IDEAS',
     ideas

@@ -3,7 +3,7 @@ import Nav from '../containers/Nav';
 import { Auth } from '../Api';
 import History from '../modules/History';
 
-const Logout = () => {
+const LogoutPage = () => {
     Auth.deauthenticateUser();
     History.replace('/');
 
@@ -19,4 +19,4 @@ const Logout = () => {
     );
 };
 
-export default Logout;
+export default LogoutPage;

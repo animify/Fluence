@@ -75,9 +75,9 @@ export const setAccount = account => ({
     account
 });
 
-export const viewingIdea = account => ({
-    type: 'SET_ACCOUNT',
-    account
+export const viewIdea = idea => ({
+    type: 'VIEW_IDEA',
+    idea
 });
 
 export const toggleIdea = id => ({

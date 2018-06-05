@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { ChevronUp } from 'react-feather';
 import { StatusMap, StatusText } from '../store/actions';
 
-const Idea = ({ _id, summary, details, category, status, upvotes, comments }) => (
+const Idea = ({ _id, summary, details, category, status, votes, comments }) => (
     <li className="item">
         <div className="upvote">
             <ChevronUp />
-            <h5>{upvotes}</h5>
+            <h5>{votes.length}</h5>
         </div>
         <div className="details">
             <Link to={`/ideas/${_id}`} className="link link-dark" role="presentation"><h6><span className="smoke@text">{category} :: </span>{summary}</h6></Link>
@@ -30,7 +30,7 @@ Idea.propTypes = {
     details: PropTypes.string.isRequired,
     status: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
-    upvotes: PropTypes.number.isRequired,
+    votes: PropTypes.array.isRequired,
     comments: PropTypes.array.isRequired,
 };
 

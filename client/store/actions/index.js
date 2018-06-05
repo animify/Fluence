@@ -42,7 +42,7 @@ export const PageRoutes = {
     ACCOUNT: '/account'
 };
 
-export const newIdea = ({ _id, summary, details, status, category, by, upvotes, created_at, comments }) => ({
+export const newIdea = ({ _id, summary, details, status, category, by, votes, created, comments }) => ({
     type: 'NEW_IDEA',
     _id,
     summary,
@@ -50,8 +50,8 @@ export const newIdea = ({ _id, summary, details, status, category, by, upvotes, 
     category,
     details,
     by,
-    upvotes,
-    created_at,
+    votes,
+    created,
     comments,
 });
 

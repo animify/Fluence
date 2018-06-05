@@ -25,15 +25,20 @@ const Idea = new Schema({
         type: String,
         required: true
     },
-    upvotes: {
-        type: Number,
-        required: true,
-        default: 0
-    },
     by: {
         type: Schema.Types.ObjectId,
         ref: User
     },
+    votes: [{
+        by: {
+            type: Schema.Types.ObjectId,
+            ref: User
+        },
+        created: {
+            type: Date,
+            default: Date.now
+        }
+    }],
     comments: [{
         body: {
             type: String,
@@ -43,12 +48,12 @@ const Idea = new Schema({
             type: Schema.Types.ObjectId,
             ref: User
         },
-        created_at: {
+        created: {
             type: Date,
             default: Date.now
         }
     }],
-    created_at: {
+    created: {
         type: Date,
         default: Date.now
     },

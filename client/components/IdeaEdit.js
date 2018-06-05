@@ -42,7 +42,7 @@ IdeaEdit.propTypes = {
         summary: PropTypes.string.isRequired,
         category: PropTypes.string.isRequired,
         status: PropTypes.number.isRequired,
-        upvotes: PropTypes.number.isRequired,
+        votes: PropTypes.array.isRequired,
         comments: PropTypes.array.isRequired,
         details: PropTypes.string.isRequired
     }).isRequired

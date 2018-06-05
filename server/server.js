@@ -5,9 +5,6 @@ import logger from './helpers/logger';
 
 const app = express();
 const core = new Core();
-
-app.use(express.static('static'));
-
 const appInit = core.middleware.initialize(app);
 
 appInit.use('/api', (req, res, next) => core.middleware.authed(req, res, next), core.routes.api);

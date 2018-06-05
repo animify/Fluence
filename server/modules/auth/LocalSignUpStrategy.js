@@ -1,7 +1,7 @@
 import { Strategy } from 'passport-local';
 import mongoose from 'mongoose';
 import crypto from 'crypto';
-import models from '../../models';
+import { User } from '../../models';
 import logger from '../../helpers/logger';
 
 export default class LocalSignUpStrategy {
@@ -18,7 +18,7 @@ export default class LocalSignUpStrategy {
         }, (req, email, password, done) => {
             logger.info('Signing up user');
             const newid = mongoose.Types.ObjectId();
-            const newUser = new models.User();
+            const newUser = new User();
 
             newUser._id = newid;
             newUser.avatar = crypto.createHash('md5').update(email).digest('hex');

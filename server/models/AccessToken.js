@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const AccessToken = new Schema({
     userId: {
@@ -23,4 +23,4 @@ const AccessToken = new Schema({
     }
 });
 
-export default AccessToken;
+export default mongoose.model('AccessToken', AccessToken);

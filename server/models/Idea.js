@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import shortid from 'shortid';
 import User from './User';
 
@@ -58,4 +58,4 @@ const Idea = new Schema({
     },
 });
 
-export default Idea;
+export default mongoose.model('Idea', Idea);

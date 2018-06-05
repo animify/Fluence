@@ -36,9 +36,9 @@ export default class Core {
         this.initializeDatabase();
         this.initializeStrategies();
         this.initializeMiddleware();
+        this.initializeControllers();
         this.initializeTools();
         this.initializeRoutes();
-        this.initializeControllers();
     }
 
     constructor() {

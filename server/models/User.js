@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import passportLocalMongoose from 'passport-local-mongoose';
 import bcrypt from 'bcrypt-nodejs';
 
@@ -61,4 +61,4 @@ User.methods.checkPassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword);
 };
 
-export default User;
+export default mongoose.model('User', User);

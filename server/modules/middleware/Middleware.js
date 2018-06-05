@@ -11,7 +11,7 @@ import ExpressRequestId from 'express-request-id';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 import useragent from 'express-useragent';
-import models from '../../models';
+import { User } from '../../models';
 import WebpackConfig from '../../../webpack.config.client';
 
 const MongoStore = require('connect-mongo')(Session);
@@ -80,7 +80,7 @@ export default class Middleware {
                 return res.status(401).end();
             }
 
-            models.User.findOne({ _id: decoded.sub }, (err, u) => {
+            User.findOne({ _id: decoded.sub }, (err, u) => {
                 if (!u) {
                     return res.status(401).end();
                 }

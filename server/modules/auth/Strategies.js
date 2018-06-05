@@ -2,7 +2,7 @@ import passport from 'passport';
 import LocalSignupStrategy from './LocalSignupStrategy';
 import LocalLoginStrategy from './LocalSignInStrategy';
 import logger from '../../helpers/logger';
-import models from '../../models';
+import { User } from '../../models';
 
 export default class Strategies {
     constructor(core) {
@@ -33,7 +33,7 @@ export default class Strategies {
 
         passport.deserializeUser((user, done) => {
             logger.info(`deserializing user ${user._id} ${user.email}`);
-            models.User.findById(user._id, (err, u) => {
+            User.findById(user._id, (err, u) => {
                 logger.info(`found user ${u}, ${err}`);
                 return done(null, u);
             });

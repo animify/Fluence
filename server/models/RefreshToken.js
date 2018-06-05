@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const RefreshToken = new Schema({
     userId: {
@@ -20,4 +20,4 @@ const RefreshToken = new Schema({
     }
 });
 
-export default RefreshToken;
+export default mongoose.model('RefreshToken', RefreshToken);

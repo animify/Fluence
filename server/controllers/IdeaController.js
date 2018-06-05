@@ -1,10 +1,10 @@
-import models from '../models';
+import { Idea, User } from '../models';
 import logger from '../helpers/logger';
 
 export default class IdeaController {
     static new(summary, details, category, by) {
         return new Promise((resolve, reject) => {
-            const idea = new models.Idea();
+            const idea = new Idea();
 
             idea.summary = summary;
             idea.details = details;
@@ -27,7 +27,7 @@ export default class IdeaController {
 
     static get() {
         return new Promise((resolve, reject) => {
-            models.Idea.find({}, (err, ideas) => {
+            Idea.find({}, (err, ideas) => {
                 logger.error(err);
                 logger.info(ideas);
 
@@ -43,16 +43,18 @@ export default class IdeaController {
     static getOne(ideaId) {
         logger.info(`getting idea ${ideaId}`);
         return new Promise((resolve, reject) => {
-            models.Idea.findOne({ _id: ideaId }, (err, idea) => {
-                logger.error(err);
-                logger.info(idea);
+            Idea.findOne({ _id: ideaId })
+                .populate('by', '_id name avatar email', User)
+                .exec((err, idea) => {
+                    logger.error(err);
+                    logger.info(idea);
 
-                if (err) {
-                    return reject(err);
-                }
+                    if (err) {
+                        return reject(err);
+                    }
 
-                resolve(idea);
-            });
+                    resolve(idea);
+                });
         });
     }
 }

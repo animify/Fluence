@@ -1,6 +1,6 @@
 import { Strategy } from 'passport-local';
 import jwt from 'jsonwebtoken';
-import models from '../../models';
+import { User } from '../../models';
 import logger from '../../helpers/logger';
 
 export default class LocalSignInStrategy {
@@ -17,7 +17,7 @@ export default class LocalSignInStrategy {
         }, (req, email, password, done) => {
             logger.info('Signing in user');
 
-            models.User.findOne({ email: new RegExp(`^${email.trim()}$`, 'i') })
+            User.findOne({ email: new RegExp(`^${email.trim()}$`, 'i') })
                 .exec((err, user) => {
                     logger.info(`got user ${user} and error ${err}`);
                     if (err) return done(err);

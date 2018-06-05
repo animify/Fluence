@@ -22,6 +22,7 @@ const getVisibleIdeas = (ideas, filter) => {
 };
 
 const mapStateToProps = state => ({
+    account: state.account,
     ideas: getVisibleIdeas(state.ideas, state.statusFilter)
 });
 

@@ -2,11 +2,11 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Idea from './Idea';
 
-const Ideas = ({ ideas, toggleIdea }) => (
+const Ideas = ({ ideas, toggleIdea, account }) => (
     <Fragment>
         <ul className="list styled">
             {ideas.length > 0 ? ideas.map(idea =>
-                <Idea key={idea._id} {...idea} />
+                <Idea key={idea._id} account={account} {...idea} />
             ) :
                 <p>No ideas in here yet.</p>}
         </ul>
@@ -25,6 +25,7 @@ Ideas.propTypes = {
             details: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
+    account: PropTypes.object.isRequired,
     toggleIdea: PropTypes.func.isRequired
 };
 

@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ChevronUp } from 'react-feather';
 import { StatusMap, StatusText } from '../store/actions';
+import store from '../store';
 
-const Idea = ({ _id, summary, details, category, status, votes, comments }) => (
+const Idea = ({ account, _id, summary, details, category, status, votes, comments }) => (
     <li className="item">
-        <div className="upvote">
+        <div className={votes.find(v => account._id === v.by) ? 'upvote upvoted' : 'upvote'}>
             <ChevronUp />
-            <h5>{votes.length}</h5>
+            <h6>{votes.length}</h6>
         </div>
         <div className="details">
             <Link to={`/ideas/${_id}`} className="link link-dark" role="presentation"><h6><span className="smoke@text">{category} :: </span>{summary}</h6></Link>
@@ -21,7 +22,7 @@ const Idea = ({ _id, summary, details, category, status, votes, comments }) => (
                 </ul>
             </div>
         </div>
-    </li>
+    </li >
 );
 
 Idea.propTypes = {
@@ -32,6 +33,7 @@ Idea.propTypes = {
     category: PropTypes.string.isRequired,
     votes: PropTypes.array.isRequired,
     comments: PropTypes.array.isRequired,
+    account: PropTypes.object.isRequired,
 };
 
 export default Idea;

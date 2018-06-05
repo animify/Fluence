@@ -9,19 +9,6 @@ const IdeaView = ({ idea }) => (
         {idea != null &&
             <Fragment>
                 <div className="row">
-                    <div className="col-12@t col-4@m">
-                        <div className="votes">
-                            <h5>Voters</h5>
-                            <p>People who have upvoted this idea.</p>
-                            <ul className="list mt3">
-                                {idea.votes.map(vote => (
-                                    <li key={vote._id} className="item">
-                                        <a className="link link-dark"><img src={vote.by.avatar} alt={vote.by.name} /> {vote.by.name}</a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
                     <div className="col-12@t col-8@m">
                         <div className="post">
                             <div className="title">
@@ -85,6 +72,23 @@ const IdeaView = ({ idea }) => (
                             <h5>{idea.comments.length} comments</h5>
                             {idea.comments.length === 0 ?
                                 <div className="nocomments">No one has left a comment on this idea yet.</div> : null}
+                        </div>
+                    </div>
+                    <div className="col-12@t col-4@m">
+                        <div>
+                            <h5>Voters</h5>
+                            <p>People who have upvoted this idea. You can <a>add a voter</a> on behalf of someone.</p>
+                            <ul className="list mt3">
+                                {idea.votes.map(vote => (
+                                    <li key={vote._id} className="item">
+                                        <a className="link link-dark"><img src={vote.by.avatar} alt={vote.by.name} /> {vote.by.name}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="mt9">
+                            <h5>Hottest ideas</h5>
+                            <p>The hottest ideas trending on Fluence right now.</p>
                         </div>
                     </div>
                 </div>

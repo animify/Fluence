@@ -4,7 +4,7 @@ import FilterLink from '../containers/FilterLink';
 import { StatusFilters, StatusText } from '../store/actions';
 
 const Filters = () => (
-    <div className="filters"> Show me <div className="dropdown">
+    <div className="filters mt6 mb3"> Show me <div className="dropdown">
         <FilterToggle />
         <ul className="menu">
             {Object.entries(StatusFilters).map(([type, name]) => (

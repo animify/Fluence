@@ -14,7 +14,7 @@ const Sidebar = () => (
                         <NavLink page={PageRoutes.ROADMAP}>Roadmap</NavLink>
                     </div>
                     <div className="float-right">
-                        <NavLink page={PageRoutes.NEW_IDEA}><span className="button base small">Post Idea</span></NavLink>
+                        <NavLink page={PageRoutes.NEW_IDEA}><span className="button small">New Idea</span></NavLink>
                         {/* <NavLink page={Pages.ACCOUNT}>
                             <div className="account">
                                 <img src="https://cdn.dribbble.com/users/276704/screenshots/4637700/dribbbleshot.png" alt="Profile" />

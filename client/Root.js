@@ -12,6 +12,7 @@ import {
     NewIdeaPage,
     IdeaPage,
     IdeasPage,
+    RoadmapPage,
     SignUpPage,
     SignInPage,
     LogoutPage,
@@ -35,6 +36,7 @@ const Root = () => (
                 <AuthedRoute path={PageRoutes.IDEAS} exact component={IdeasPage} />
                 <AuthedRoute path={PageRoutes.NEW_IDEA} component={NewIdeaPage} />
                 <AuthedRoute path={PageRoutes.IDEA} component={IdeaPage} />
+                <AuthedRoute path={PageRoutes.ROADMAP} component={RoadmapPage} />
                 <Route path={PageRoutes.SIGN_UP} component={SignUpPage} />
                 <Route path={PageRoutes.SIGN_IN} component={SignInPage} />
                 <Route path={PageRoutes.LOGOUT} component={LogoutPage} />
